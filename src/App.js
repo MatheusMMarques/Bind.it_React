@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Cabecalho from './Components/Cabecalho';
+import Contato from './Components/Contato';
+import Video from './Video/noob.mp4'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="App">
+      <Cabecalho/>
+
+      <section className='card-bindit'>
+        <div className='card-info'>
+          <span>
+            Venha conhecer o Bind.it!
+          </span>
+        </div>
+      </section>
+
+      <section id="section" className="section">
+        <div className="video-container">
+          <video className="video" controls>
+            <source src={Video} type="video/mp4" />
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
+        </div>
+      </section>
+
+      <Contato/>
+
+    </section>
   );
 }
 
