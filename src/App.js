@@ -1,33 +1,16 @@
-import Cabecalho from './Components/Cabecalho';
-import Contato from './Components/Contato';
-import Video from './Video/noob.mp4'
+import Cadastro from './Components/Cadastro';
+import Home from './Components/Home';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 
 function App() {
   return (
-    <section className="App">
-      <Cabecalho/>
-
-      <section className='card-bindit'>
-        <div className='card-info'>
-          <span>
-            Venha conhecer o Bind.it!
-          </span>
-        </div>
-      </section>
-
-      <section id="section" className="section">
-        <div className="video-container">
-          <video className="video" controls>
-            <source src={Video} type="video/mp4" />
-            Seu navegador não suporta o elemento de vídeo.
-          </video>
-        </div>
-      </section>
-
-      <Contato/>
-
-    </section>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/g' element={<Home/>}/>
+        <Route path='/cadastro' element={<Cadastro/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
