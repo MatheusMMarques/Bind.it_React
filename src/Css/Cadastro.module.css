@@ -10,7 +10,7 @@
   background-color: #7d26cd;
   color: #fff;
   background-image: linear-gradient( 45deg, rgb(20, 20, 20), #1f165f);
-  max-width: 100vw;
+  min-height: 100vh;
 }
 
 .cadastroContainer {
@@ -19,7 +19,6 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  height: 100vh;
 }
 
 .logoContainer {
