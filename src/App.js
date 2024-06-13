@@ -1,4 +1,5 @@
 import Cadastro from './Components/Cadastro';
+import Dashboard from './Components/Dashboard';
 import Home from './Components/Home';
 import Login from './Components/Login';
 import Visao from './Components/Visao';
@@ -13,6 +14,7 @@ function App() {
         <Route path='/cadastro' element={<Cadastro/>}/>
         <Route path='/login'tro element={<Login/>}/>
         <Route path='/visao'tro element={<Visao/>}/>
+        <Route path='/dashboard'tro element={<Dashboard/>}/>
       </Routes>
     </BrowserRouter>
   );
