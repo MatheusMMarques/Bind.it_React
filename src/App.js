@@ -1,20 +1,23 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Cadastro from './Components/Cadastro';
-import Dashboard from './Components/Dashboard';
 import Home from './Components/Home';
 import Login from './Components/Login';
+import Dashboard from './Components/Dashboard';
 import Visao from './Components/Visao';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/cadastro' element={<Cadastro/>}/>
-        <Route path='/login'tro element={<Login/>}/>
-        <Route path='/visao'tro element={<Visao/>}/>
-        <Route path='/dashboard'tro element={<Dashboard/>}/>
+        <Route path="/home" element={<Home />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/visao" element={<Visao />} />
+        <Route path="/dashboard/*" element={<Dashboard />} >
+          <Route path="*" element={<Navigate to="criar-grupo" />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="home" />} />
       </Routes>
     </BrowserRouter>
   );
