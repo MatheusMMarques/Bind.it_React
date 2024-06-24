@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import api from '../server/Api';
 import styles from '../Css/CriarGrupo.module.css';
 
 function CriarGrupo() {
@@ -17,9 +18,15 @@ function CriarGrupo() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(group); // Certifique-se de que os dados do grupo estão sendo logados corretamente
+    try {
+      await api.post('/groups', group);
+      console.log('Grupo criado com sucesso!');
+      // Redirecionar ou atualizar a lista de grupos após a criação
+    } catch (error) {
+      console.error('Erro ao criar grupo:', error);
+    }
   };
 
   return (

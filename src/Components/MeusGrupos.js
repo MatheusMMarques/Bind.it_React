@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import api from '../server/Api';
 import styles from '../Css/MeusGrupos.module.css';
 
 function MeusGrupos() {
@@ -6,20 +7,28 @@ function MeusGrupos() {
   const [editGroup, setEditGroup] = useState(null);
 
   useEffect(() => {
-    // Aqui você pode buscar os grupos do back-end
-    const fetchedGroups = [
-      { id: 1, name: "Grupo 1", game: "CS:GO", maxMembers: 5, description: "Grupo de CS:GO para campeonatos." },
-      { id: 2, name: "Grupo 2", game: "Valorant", maxMembers: 5, description: "Grupo de Valorant para partidas." },
-    ];
-    setGroups(fetchedGroups);
+    const fetchGroups = async () => {
+      try {
+        const response = await api.get('/groups');
+        setGroups(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar grupos:', error);
+      }
+    };
+    fetchGroups();
   }, []);
 
   const handleEdit = (group) => {
     setEditGroup(group);
   };
 
-  const handleDelete = (id) => {
-    setGroups(groups.filter(group => group.id !== id));
+  const handleDelete = async (id) => {
+    try {
+      await api.delete(`/groups/${id}`);
+      setGroups(groups.filter(group => group.id !== id));
+    } catch (error) {
+      console.error('Erro ao deletar grupo:', error);
+    }
   };
 
   const handleChange = (e) => {
@@ -30,9 +39,14 @@ function MeusGrupos() {
     }));
   };
 
-  const handleSave = () => {
-    setGroups(groups.map(group => (group.id === editGroup.id ? editGroup : group)));
-    setEditGroup(null);
+  const handleSave = async () => {
+    try {
+      await api.put(`/groups/${editGroup.id}`, editGroup);
+      setGroups(groups.map(group => (group.id === editGroup.id ? editGroup : group)));
+      setEditGroup(null);
+    } catch (error) {
+      console.error('Erro ao atualizar grupo:', error);
+    }
   };
 
   return (
