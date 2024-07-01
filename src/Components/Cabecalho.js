@@ -8,7 +8,7 @@ function Cabecalho() {
       <nav className={styles.nav}>
         <div className="menu-left">
           <a href="#section1" className={styles.animatedLink}>Sobre nós</a>
-          <a href="#section2" className={styles.animatedLink}>Visão</a>
+          <Link to={"/visao"}><a href="#section2" className={styles.animatedLink}>Visão</a></Link>
         </div>
 
 
@@ -17,7 +17,7 @@ function Cabecalho() {
         </div>
 
         <div className="menu-right">
-          <a href="#section3" className={styles.animatedLink}>Entrar</a>
+          <Link to={"/login"}><a className={styles.animatedLink}>Entrar</a></Link>
           <Link to={"/cadastro"}><button className={styles.cadastro}>Cadastre-se</button></Link>
         </div>
 
